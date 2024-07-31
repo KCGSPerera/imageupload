@@ -3,7 +3,7 @@ const cloudinary = require("../utils/cloudinary");
 
 exports.createProduct = async(req,res)=>{
 
-    const {pId, name, category} = req.body;
+    const {pId, name, category, file} = req.body;
 
     try {
 
@@ -16,7 +16,7 @@ exports.createProduct = async(req,res)=>{
         })
         }
 
-        const result = await cloudinary.uploader.upload(req.file.path, {
+        const result = await cloudinary.uploader.upload(file, {
             folder: "products",
             // width: 300,
             // crop: "scale"
@@ -26,7 +26,7 @@ exports.createProduct = async(req,res)=>{
             pId,
             name,
             category,
-            image:{
+            file:{
                 public_id: result.public_id,
                 url: result.secure_url
             }

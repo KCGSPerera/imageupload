@@ -13,7 +13,7 @@ const productSchema = new mongoose.Schema(
             type: String,
             // required: [true, "Product must have a category"],
         },
-        image: {
+        file: {
             public_id: {
                 type: String,
                 // required: true
